@@ -11,8 +11,10 @@
   "author": "Victor Gonzalez",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.2.3",
     "axios": "^0.27.2",
     "bottleneck": "^2.19.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "node-cache": "^5.1.2",
     "swagger-jsdoc": "^6.2.1",
