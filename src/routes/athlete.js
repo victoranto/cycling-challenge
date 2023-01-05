@@ -23,10 +23,6 @@ const checkCache = (req, res, next) => {
   }
 }
 
-router.get('/test', checkCache, async (req, res) => {
-  return res.status(200).json('Test')
-})
-
 /**
  * @swagger
  * components:
@@ -70,6 +66,21 @@ router.get('/athlete', checkCache, async (req, res) => {
   }
 
   return res.status(200).json(athletes)
+})
+
+router.post('/athlete/new', checkCache, async (req, res) => {
+  const { email, name } = req.body
+  const { data, error } = await supabase
+    .from('athlete')
+    .insert([
+      { email, name }
+    ])
+
+  if (error) {
+    return res.status(500).json(error)
+  }
+
+  return res.status(200).json(data)
 })
 
 module.exports = router
